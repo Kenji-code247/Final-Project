@@ -1,22 +1,46 @@
-document.getElementById("convertBtn").addEventListener("click", () => {
-  let val = parseFloat(document.getElementById("value").value);
-  let conv = document.getElementById("conversion").value;
-  let res;
+document.addEventListener('DOMContentLoaded', () => {
+    const valueInput = document.getElementById('value');
+    const conversionSelect = document.getElementById('conversion');
+    const resultParagraph = document.getElementById('result');
+    const convertBtn = document.getElementById('convertBtn');
+    const clearBtn = document.getElementById('clearBtn');
 
-  if(isNaN(val)) res = "Please enter a valid number.";
-  else {
-    switch(conv) {
-      case "FtoC": res = ((val - 32) * 5/9).toFixed(2) + " °C"; break;
-      case "CtoF": res = ((val * 9/5) + 32).toFixed(2) + " °F"; break;
-      case "MtoFt": res = (val * 3.28084).toFixed(2) + " ft"; break;
-      case "FtoM": res = (val / 3.28084).toFixed(2) + " m"; break;
+    function convert() {
+        const value = parseFloat(valueInput.value);
+
+        if (isNaN(value)) {
+            resultParagraph.textContent = 'Please enter a valid number.';
+            return;
+        }
+
+        let result;
+
+        switch (conversionSelect.value) {
+            case 'FtoC':
+                result = ((value - 32) * 5/9).toFixed(2) + ' °C';
+                break;
+            case 'CtoF':
+                result = ((value * 9/5) + 32).toFixed(2) + ' °F';
+                break;
+            case 'MtoFt':
+                result = (value * 3.28084).toFixed(2) + ' ft';
+                break;
+            case 'FtoM':
+                result = (value / 3.28084).toFixed(2) + ' m';
+                break;
+            default:
+                result = 'Unknown conversion';
+        }
+
+        resultParagraph.textContent = `Result: ${result}`;
     }
-  }
-  document.getElementById("result").textContent = res;
-});
 
-document.getElementById("clearBtn").addEventListener("click", () => {
-  document.getElementById("value").value = "";
-  document.getElementById("conversion").value = "FtoC";
-  document.getElementById("result").textContent = "";
+    function clearFields() {
+        valueInput.value = '';
+        resultParagraph.textContent = '';
+        conversionSelect.selectedIndex = 0;
+    }
+
+    convertBtn.addEventListener('click', convert);
+    clearBtn.addEventListener('click', clearFields);
 });
