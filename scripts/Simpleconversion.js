@@ -1,23 +1,18 @@
-window.addEventListener("load", function() {
+document.addEventListener("DOMContentLoaded", function() {
     const valueInput = document.getElementById("value");
     const conversionSelect = document.getElementById("conversion");
     const resultPara = document.getElementById("result");
     const convertBtn = document.getElementById("convertBtn");
     const clearBtn = document.getElementById("clearBtn");
 
-    if (!valueInput || !conversionSelect || !resultPara || !convertBtn || !clearBtn) {
-        console.error("One or more elements not found. Check your IDs.");
-        return;
-    }
-
-    convertBtn.addEventListener("click", function() {
+    convertBtn.onclick = function() {
         const value = parseFloat(valueInput.value);
         if (isNaN(value)) {
             resultPara.textContent = "Please enter a valid number.";
             return;
         }
 
-        let result;
+        let result = "";
         switch (conversionSelect.value) {
             case "FtoC":
                 result = ((value - 32) * 5/9).toFixed(2) + " °C";
@@ -31,14 +26,16 @@ window.addEventListener("load", function() {
             case "FtoM":
                 result = (value / 3.28084).toFixed(2) + " m";
                 break;
+            default:
+                result = "Invalid conversion.";
         }
 
         resultPara.textContent = result;
-    });
+    };
 
-    clearBtn.addEventListener("click", function() {
+    clearBtn.onclick = function() {
         valueInput.value = "";
         resultPara.textContent = "";
         conversionSelect.selectedIndex = 0;
-    });
+    };
 });
