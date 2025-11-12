@@ -15,15 +15,16 @@
   margin: 0.5rem 0;
   border-radius: 8px;
   border: 1px solid #00ffff;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   color: #000000;
+  font-size: 1rem;
 }
 
 .assignment-container button {
   cursor: pointer;
   background: linear-gradient(135deg, #00dfff, #56ccf2);
   border: none;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   padding: 0.7rem 1.2rem;
   border-radius: 12px;
   font-weight: bold;
@@ -40,4 +41,25 @@
   margin-top: 1rem;
   font-weight: bold;
   color: #00ffff;
+}
+
+.button-grid {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.button-grid .btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  background: linear-gradient(135deg, #00dfff, #56ccf2);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.button-grid .btn:hover {
+  background: linear-gradient(135deg, #56ccf2, #00dfff);
+  transform: scale(1.05);
 }
