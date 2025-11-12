@@ -1,9 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", function() {
     const valueInput = document.getElementById("value");
     const conversionSelect = document.getElementById("conversion");
     const resultPara = document.getElementById("result");
     const convertBtn = document.getElementById("convertBtn");
     const clearBtn = document.getElementById("clearBtn");
+
+    if (!valueInput || !conversionSelect || !resultPara || !convertBtn || !clearBtn) {
+        console.error("One or more elements not found. Check your IDs.");
+        return;
+    }
 
     convertBtn.addEventListener("click", function() {
         const value = parseFloat(valueInput.value);
